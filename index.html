@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pelko OS - High Performance & Security Operating System</title>
+  <title>Pelko OS - Gaming, Editing & Cybersecurity Edition</title>
+  <link rel="icon" type="image/png" href="logo.png">
   <style>
     :root {
       --bg-main: #0c0d10;
@@ -35,6 +36,511 @@
       line-height: 1.6;
       overflow-x: hidden;
     }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 8%;
+      background-color: rgba(12, 13, 16, 0.85);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--orange-primary);
+      text-decoration: none;
+    }
+
+    .nav-logo {
+      height: 36px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--orange-primary);
+    }
+
+    .nav-cta {
+      background-color: var(--orange-primary);
+      color: #fff;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .nav-cta:hover {
+      background-color: var(--orange-hover);
+      box-shadow: 0 0 15px var(--orange-glow);
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 1rem 4rem 1rem;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      height: 400px;
+      background: var(--orange-primary);
+      filter: blur(200px);
+      opacity: 0.25;
+      pointer-events: none;
+    }
+
+    .hero-logo-wrapper {
+      margin-bottom: 1rem;
+    }
+
+    .hero-logo {
+      width: 110px;
+      height: auto;
+      filter: drop-shadow(0 0 25px rgba(255, 85, 0, 0.5));
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    .hero-logo:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 35px rgba(255, 85, 0, 0.8));
+    }
+
+    .giant-title {
+      font-size: clamp(3.5rem, 11vw, 8.5rem);
+      font-weight: 900;
+      letter-spacing: -2px;
+      text-transform: uppercase;
+      line-height: 0.95;
+      background: linear-gradient(180deg, #ffffff 30%, var(--orange-primary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      color: var(--text-muted);
+      max-width: 700px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn-primary {
+      background-color: var(--orange-primary);
+      color: #fff;
+      padding: 0.9rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 20px var(--orange-glow);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--orange-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px var(--orange-glow);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+      padding: 0.9rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--orange-primary);
+      color: var(--orange-primary);
+    }
+
+    /* Sections */
+    .section {
+      padding: 5rem 8%;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background-color: var(--orange-primary);
+      border-radius: 2px;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      margin-bottom: 3rem;
+      max-width: 700px;
+    }
+
+    /* About Card */
+    .about-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+
+    .about-card p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    /* Downloads Grid */
+    .downloads-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .download-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 2.2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .download-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--orange-primary);
+    }
+
+    .download-card.featured {
+      border-color: var(--orange-primary);
+      box-shadow: 0 0 25px rgba(255, 85, 0, 0.15);
+    }
+
+    .badge {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      background-color: var(--orange-primary);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.25rem 0.6rem;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .download-version {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .download-meta {
+      color: var(--orange-primary);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+    }
+
+    .feature-list {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+
+    .feature-list li {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .feature-list li::before {
+      content: "✓";
+      color: var(--orange-primary);
+      font-weight: bold;
+    }
+
+    .download-btn {
+      display: block;
+      text-align: center;
+      background-color: var(--orange-primary);
+      color: #fff;
+      padding: 0.85rem 1.2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .download-btn:hover {
+      background-color: var(--orange-hover);
+      box-shadow: 0 4px 15px var(--orange-glow);
+    }
+
+    /* Specs Table */
+    .specs-table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: var(--bg-card);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+
+    .specs-table th, .specs-table td {
+      padding: 1rem 1.5rem;
+      text-align: left;
+    }
+
+    .specs-table th {
+      background-color: rgba(255, 85, 0, 0.1);
+      color: var(--orange-primary);
+      font-weight: 600;
+    }
+
+    .specs-table tr:not(:last-child) {
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .specs-table td {
+      color: var(--text-muted);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-color);
+      padding: 3rem 8%;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-top: 4rem;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .section {
+        padding: 4rem 5%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="#" class="brand">
+      <img src="logo.png" alt="Pelko OS Logo" class="nav-logo">
+      <span>PELKO OS</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">Cos'è</a></li>
+      <li><a href="#download">Edizioni ISO</a></li>
+      <li><a href="#specs">Requisiti</a></li>
+    </ul>
+    <a href="#download" class="nav-cta">Scarica ISO</a>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-logo-wrapper">
+      <img src="logo.png" alt="Pelko OS Symbol" class="hero-logo">
+    </div>
+    <h1 class="giant-title">PELKO OS</h1>
+    <p class="hero-subtitle">
+      Il sistema operativo basato su Linux progettato su misura per Gaming, Content Creation e Cybersecurity.
+    </p>
+    <div class="hero-buttons">
+      <a href="#download" class="btn-primary">Scegli la tua Versione</a>
+      <a href="#about" class="btn-secondary">Scopri Architettura</a>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <h2 class="section-title">Panoramica Generale</h2>
+    <p class="section-desc">Efficienza del kernel, latenza minima e moduli personalizzati.</p>
+    <div class="about-card">
+      <p>
+        <strong>Pelko OS</strong> elimina qualsiasi collo di bottiglia del sistema operativo standard. 
+        Sviluppato con profili di ottimizzazione specifici per l'hardware moderno, è disponibile in tre edizioni 
+        indipendenti e preconfigurate per rispondere immediatamente ad ogni esigenza di calcolo intensivo.
+      </p>
+    </div>
+  </section>
+
+  <!-- Download Section con le 3 Versioni -->
+  <section id="download" class="section">
+    <h2 class="section-title">Download Edizioni ISO</h2>
+    <p class="section-desc">Seleziona la versione ottimizzata per il tuo flusso di lavoro e scarica il file ISO.</p>
+
+    <div class="downloads-grid">
+
+      <!-- GAMING EDITION -->
+      <div class="download-card featured">
+        <span class="badge">Performance</span>
+        <div>
+          <div class="card-icon">🎮</div>
+          <div class="download-version">Pelko OS Gaming</div>
+          <div class="download-meta">Dimensione: 3.2 GB | Kernel XanMod Low-Latency</div>
+          <ul class="feature-list">
+            <li>Driver NVIDIA/AMD proprietari pre-applicati</li>
+            <li>Proton & Wine preconfigurati per la massima compatibilità</li>
+            <li>GameMode & MangoHud attivi di default</li>
+            <li>Tweak di memoria per massimizzare i FPS</li>
+          </ul>
+        </div>
+        <a href="https://example.com/downloads/pelko-os-gaming.iso" target="_blank" class="download-btn">Scarica Gaming ISO</a>
+      </div>
+
+      <!-- EDITING EDITION -->
+      <div class="download-card">
+        <div>
+          <div class="card-icon">🎬</div>
+          <div class="download-version">Pelko OS Editing</div>
+          <div class="download-meta">Dimensione: 3.8 GB | Realtime Audio/Video Tuning</div>
+          <ul class="feature-list">
+            <li>Ottimizzazione I/O NVMe per rendering pesanti</li>
+            <li>Supporto completo Color Management & Display HDR</li>
+            <li>Suite DaVinci, Blender & OBS Studio pronte all'uso</li>
+            <li>Gestione PipeWire a bassissima latenza audio</li>
+          </ul>
+        </div>
+        <a href="https://example.com/downloads/pelko-os-editing.iso" target="_blank" class="download-btn">Scarica Editing ISO</a>
+      </div>
+
+      <!-- HACKING EDITION -->
+      <div class="download-card">
+        <span class="badge" style="background-color: #333; color: #ff5500; border: 1px solid #ff5500;">Security</span>
+        <div>
+          <div class="card-icon">🛡️</div>
+          <div class="download-version">Pelko OS Hacking</div>
+          <div class="download-meta">Dimensione: 2.6 GB | Pentesting & Auditing</div>
+          <ul class="feature-list">
+            <li>Toolset avanzato per analisi di rete e vulnerabilità</li>
+            <li>Ambiente isolato Sandboxed pre-impostato</li>
+            <li>UI ultra-leggera per esecuzione da Live USB o VM</li>
+            <li>Script di automazione per Security Auditing</li>
+          </ul>
+        </div>
+        <a href="https://example.com/downloads/pelko-os-hacking.iso" target="_blank" class="download-btn">Scarica Hacking ISO</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Hardware Requirements -->
+  <section id="specs" class="section">
+    <h2 class="section-title">Requisiti di Sistema</h2>
+    <p class="section-desc">Specifiche consigliate in base all'edizione scelta.</p>
+
+    <table class="specs-table">
+      <thead>
+        <tr>
+          <th>Edizione</th>
+          <th>CPU Minima</th>
+          <th>RAM Consigliata</th>
+          <th>Spazio SSD</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Gaming</strong></td>
+          <td>Quad-Core 3.0 GHz+</td>
+          <td>16 GB RAM</td>
+          <td>50 GB NVMe</td>
+        </tr>
+        <tr>
+          <td><strong>Editing</strong></td>
+          <td>6-Core / 12-Thread+</td>
+          <td>32 GB RAM</td>
+          <td>100 GB NVMe High-Speed</td>
+        </tr>
+        <tr>
+          <td><strong>Hacking</strong></td>
+          <td>Dual-Core 2.0 GHz+</td>
+          <td>8 GB RAM</td>
+          <td>25 GB SSD (Supporta Live USB)</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Pelko OS Project. Tutti i diritti riservati.</p>
+  </footer>
+
+</body>
+</html>    }
 
     /* Navbar */
     .navbar {
